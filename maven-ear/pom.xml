@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>modul2-homework1-maven</artifactId>
+        <groupId>com.otus.mastugan</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.otus.mastugan</groupId>
+    <artifactId>maven-ear</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>ear</packaging>
+
+    <name>Simple Ear module by Mastuganio</name>
+    <description>EARs are probably the simplest Java EE constructs, consisting primarily of the deployment
+        descriptor application.xml file, some resources and some modules.</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <version>6</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                        <webModule>
+                            <groupId>${project.parent.groupId}</groupId>
+                            <artifactId>maven-war</artifactId>
+                            <contextRoot>/example/ear</contextRoot>
+                            <bundleFileName>simple-maven-war.war</bundleFileName>
+                        </webModule>
+                        <jarModule>
+                            <groupId>${project.parent.groupId}</groupId>
+                            <artifactId>maven-jar</artifactId>
+                        </jarModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>maven-war</artifactId>
+            <version>${project.parent.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>maven-jar</artifactId>
+            <version>${project.parent.version}</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>
