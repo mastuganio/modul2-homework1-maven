@@ -33,10 +33,6 @@
                         </manifest>
                     </archive>
                     <generateClient>true</generateClient>
-                    <clientExcludes>
-                        <clientExclude>**/META-INF/*.xml</clientExclude>
-                        <clientExclude>**/ejb/*EJB.class</clientExclude>
-                    </clientExcludes>
                 </configuration>
             </plugin>
         </plugins>
